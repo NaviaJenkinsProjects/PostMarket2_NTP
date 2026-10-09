@@ -153,7 +153,7 @@ public class Login_Page extends BaseClass {
         // STEP 11: Wait for home page — increased to 90s for headless slow render
         // Added more fallback XPaths in case primary ones aren't present on web.navia.co.in
         try {
-            new WebDriverWait(driver, Duration.ofSeconds(90)).until(
+            new WebDriverWait(driver, Duration.ofSeconds(20)).until(
                 ExpectedConditions.or(
                     ExpectedConditions.visibilityOfElementLocated(
                         By.xpath("//label[text()='Dashboard']")),
@@ -225,6 +225,7 @@ public class Login_Page extends BaseClass {
 	@When("User Click Login Again")
 	public void user_click_login_again() throws InterruptedException {
 
+		driver.manage().window().maximize();
 	Thread.sleep(2000);
 		//clickOnElement(l.getLoginAfterOTP());
 //		setImplicitWait(24);
@@ -260,43 +261,13 @@ public class Login_Page extends BaseClass {
 	}
 
 
-	driver.manage().window().maximize();
+	
 	Thread.sleep(2000);
 	
-	try {
-		
-		driver.switchTo().alert().accept();
-
-		driver.findElement(By.xpath("//button[@data-dhx-id='close']")).click();
-	} catch (Exception e) {
-		driver.findElement(By.xpath("//button[@data-dhx-id='close']")).click();
-	}
-		
-	
-	try {
-		
-		Actions s=new Actions(driver);
-		WebElement element = driver.findElement(By.xpath("//div[@class='user-name']"));
-		
-		s.moveToElement(element).perform();
-		Thread.sleep(1000);
-		s.click(element).perform();
-		Thread.sleep(1000);
-		
-		
-		WebElement element1 = driver.findElement(By.xpath("//li[@class='Light']"));
-		s.moveToElement(element1).perform();
-		Thread.sleep(1000);
-		s.click(element1).perform();
-		Thread.sleep(1000);
-		
-	} catch (Exception e) {
-		// TODO: handle exception
-	}
 	
 	
 	
-	
+	//driver.manage().window().maximize();
 	
 
 	}
